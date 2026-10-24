@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مقرأة الشيخ عمار — المتابعة الشهرية للحفظ والمراجعة</title>
+  <meta name="description"
+    content="متابعة شهرية لحفظ ومراجعة طلاب مقرأة الشيخ عمار مع تقارير فردية وأرشيف للشهور ومشاركة عبر واتساب.">
+  <meta name="theme-color" content="#0d4040">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕌</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Tajawal:wght@400;500;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --teal: #0d4040;
+      --teal2: #155a5a;
+      --teal3: #1f7272;
+      --gold: #c9a04a;
+      --gold2: #e3c987;
+      --gold3: #f4ead0;
+      --gold-ink: #7a5a14;
+      --ink: #3a3222;
+      --muted: #6e5f3d;
+      --bg: #f6f0e2;
+      --card: #fffdf6;
+      --line: #e2d5b8;
+      --red: #a33a29;
+      --star-off: #d9ccaa;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      background-image: radial-gradient(circle at 50% 0%, #fff8e8 0%, var(--bg) 70%);
+      min-height: 100vh;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--teal3);
+      outline-offset: 2px;
+    }
+
+    .sr-only {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip {
+      position: absolute;
+      top: -60px;
+      right: 12px;
+      background: var(--gold);
+      color: #2a1f05;
+      padding: 10px 18px;
+      border-radius: 0 0 12px 12px;
+      font-weight: 700;
+      z-index: 100;
+      text-decoration: none;
+    }
+
+    .skip:focus {
+      top: 0;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 30px 16px 24px;
+      background: linear-gradient(160deg, var(--teal) 0%, var(--teal2) 60%, var(--teal3) 100%);
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      font-size: 40px;
+      opacity: .9;
+      top: 12px;
+    }
+
+    .hero::before {
+      content: '🌙';
+      right: 16px;
+    }
+
+    .hero::after {
+      content: '🏮';
+      left: 16px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      color: #fff;
+      font-family: 'Amiri', serif;
+      font-size: clamp(24px, 6vw, 38px);
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+    }
+
+    .hero .orn {
+      color: var(--gold2);
+      font-size: 18px;
+      letter-spacing: 6px;
+      margin: 4px 0;
+    }
+
+    .hero .sub {
+      color: var(--gold3);
+      font-size: clamp(13px, 3.2vw, 16px);
+      margin: 0;
+    }
+
+    .hero .print-month {
+      display: none;
+      color: #fff;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 14px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      margin-top: 16px;
+      box-shadow: 0 4px 14px rgba(60, 45, 10, .06);
+    }
+
+    /* شريط الشهر */
+    .month-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 12px;
+      align-items: end;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 0;
+    }
+
+    .field label {
+      font-weight: 700;
+      color: var(--teal);
+      font-size: 14px;
+    }
+
+    .month-bar select,
+    .month-bar input,
+    .ctl {
+      width: 100%;
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      background: #fff;
+      padding: 10px 14px;
+      font-size: 15px;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .month-bar select:focus,
+    .month-bar input:focus,
+    .ctl:focus {
+      border-color: var(--teal2);
+      box-shadow: 0 0 0 4px rgba(21, 90, 90, .15);
+      outline: none;
+    }
+
+    .month-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    @media (max-width:680px) {
+      .month-bar {
+        grid-template-columns: 1fr;
+      }
+
+      .month-actions>* {
+        flex: 1;
+      }
+    }
+
+    /* الملخص */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .stat .k {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .stat .v {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--teal);
+      margin-top: 2px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .stat .s {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width:680px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .toolbar .search {
+      flex: 1 1 200px;
+      min-width: 160px;
+    }
+
+    .toolbar .sort {
+      flex: 0 1 190px;
+    }
+
+    .toolbar .spacer {
+      flex: 1 1 auto;
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 12px;
+      padding: 11px 16px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: transform .12s, box-shadow .12s;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, .12);
+      white-space: nowrap;
+    }
+
+    .btn:active {
+      transform: scale(.96);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #b8923d, #9c7a2c);
+      color: #fff;
+    }
+
+    .btn-teal {
+      background: linear-gradient(135deg, var(--teal2), var(--teal3));
+      color: #fff;
+    }
+
+    .btn-red {
+      background: linear-gradient(135deg, #b4432f, #962f1f);
+      color: #fff;
+    }
+
+    .btn-light {
+      background: #fff;
+      color: var(--teal2);
+      border: 2px solid var(--teal2);
+      box-shadow: none;
+    }
+
+    .btn-sm {
+      padding: 8px 13px;
+      font-size: 14px;
+      border-radius: 11px;
+    }
+
+    .save-status {
+      font-size: 13px;
+      color: var(--teal2);
+      font-weight: 700;
+      min-width: 120px;
+    }
+
+    .save-status.err {
+      color: var(--red);
+    }
+
+    .table-wrap {
+      margin-top: 14px;
+      background: var(--card);
+      border-radius: 20px;
+      border: 2px solid var(--line);
+      box-shadow: 0 8px 24px rgba(60, 45, 10, .1);
+      overflow-x: auto;
+    }
+
+    table.grid {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      min-width: 1000px;
+    }
+
+    .grid thead th {
+      position: sticky;
+      top: 0;
+      background: var(--teal);
+      color: #fff;
+      padding: 11px 8px;
+      font-size: 14px;
+      z-index: 2;
+    }
+
+    .grid thead .sub-head {
+      background: var(--gold2);
+      color: #2a1f05;
+      font-size: 12px;
+      padding: 7px 6px;
+    }
+
+    .grid th,
+    .grid td {
+      border-bottom: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      text-align: center;
+      padding: 7px 5px;
+      font-size: 14px;
+    }
+
+    .grid tbody tr:nth-child(even) {
+      background: #fbf6ea;
+    }
+
+    .grid tbody tr:hover {
+      background: #fff3d6;
+    }
+
+    .grid .name-cell {
+      position: sticky;
+      right: 0;
+      z-index: 1;
+      background: inherit;
+      min-width: 120px;
+      padding: 4px;
+    }
+
+    .grid tbody tr .name-cell {
+      background: var(--card);
+    }
+
+    .grid tbody tr:nth-child(even) .name-cell {
+      background: #fbf6ea;
+    }
+
+    .name-cell input {
+      width: 100%;
+      border: 2px solid transparent;
+      background: transparent;
+      border-radius: 10px;
+      padding: 8px 6px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--teal);
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .name-cell input:hover {
+      border-color: var(--line);
+    }
+
+    .name-cell input:focus {
+      border-color: var(--gold);
+      background: #fff;
+      outline: none;
+    }
+
+    .empty-row td {
+      padding: 26px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .stars {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .stars .star {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      color: var(--star-off);
+      padding: 3px 1px;
+      line-height: 1;
+      border-radius: 4px;
+    }
+
+    .stars .star.on {
+      color: var(--gold);
+      text-shadow: 0 0 4px rgba(201, 160, 74, .45);
+    }
+
+    .stars .star:hover {
+      transform: scale(1.2);
+    }
+
+    .stars .star:focus-visible {
+      outline: 2px solid var(--teal3);
+      outline-offset: 0;
+    }
+
+    .cv {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-top: 1px;
+      min-height: 14px;
+    }
+
+    .avg-cell {
+      font-weight: 800;
+      color: var(--teal2);
+      font-size: 15px;
+      min-width: 62px;
+    }
+
+    .level-badge {
+      display: inline-block;
+      padding: 5px 11px;
+      border-radius: 30px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 12.5px;
+      white-space: nowrap;
+    }
+
+    .l1 {
+      background: #a33a29;
+    }
+
+    .l2 {
+      background: #a14e1b;
+    }
+
+    .l3 {
+      background: #946012;
+    }
+
+    .l4 {
+      background: #86661a;
+    }
+
+    .l5 {
+      background: #6b7018;
+    }
+
+    .l6 {
+      background: #5d731a;
+    }
+
+    .l7 {
+      background: #4f761d;
+    }
+
+    .l8 {
+      background: #3f7520;
+    }
+
+    .l9 {
+      background: #2e7124;
+    }
+
+    .l10 {
+      background: #17663a;
+    }
+
+    .l0 {
+      background: #6f685c;
+    }
+
+    .icon-btn {
+      background: #fff;
+      border: 2px solid var(--line);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 6px 8px;
+      margin: 1px;
+      min-width: 38px;
+      min-height: 38px;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--teal2);
+    }
+
+    .del-btn:hover {
+      background: #fdecea;
+      border-color: var(--red);
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      font-size: 13px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .legend .lstar {
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    .tips {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 14px 0 30px;
+      padding: 0 4px;
+      line-height: 1.9;
+    }
+
+    .tips kbd {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-bottom-width: 2px;
+      border-radius: 6px;
+      padding: 0 6px;
+      font-size: 12px;
+      font-family: inherit;
+    }
+
+    /* النوافذ */
+    dialog {
+      border: none;
+      padding: 0;
+      background: transparent;
+      max-width: 460px;
+      width: calc(100% - 24px);
+      max-height: calc(100vh - 24px);
+    }
+
+    dialog::backdrop {
+      background: rgba(20, 15, 5, .6);
+      backdrop-filter: blur(3px);
+    }
+
+    .rcard {
+      background: linear-gradient(175deg, #fffdf6 0%, #fbf3df 100%);
+      border-radius: 24px;
+      border: 3px solid var(--gold);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+      padding: 0 0 18px;
+      overflow: hidden;
+      animation: pop .22s ease;
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(.92);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .rhead {
+      background: linear-gradient(160deg, var(--teal), var(--teal3));
+      text-align: center;
+      padding: 18px 14px 14px;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .rhead h2 {
+      margin: 0;
+      font-size: 21px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .rhead .m {
+      color: var(--gold2);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .rname {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--teal);
+      margin: 16px 0 2px;
+    }
+
+    .rrole {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .rbody {
+      padding: 0 18px;
+    }
+
+    .rbody table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    }
+
+    .rbody th {
+      background: var(--teal2);
+      color: #fff;
+      padding: 8px 6px;
+      font-size: 13px;
+    }
+
+    .rbody td {
+      background: #fff;
+      padding: 7px 6px;
+      font-size: 13px;
+      border-bottom: 1px solid #efe6cf;
+      text-align: center;
+    }
+
+    .rbody .rs {
+      color: var(--gold);
+      letter-spacing: .5px;
+    }
+
+    .rbody .rs i {
+      color: var(--star-off);
+      font-style: normal;
+    }
+
+    .trend-up {
+      color: #2e7124;
+      font-weight: 800;
+    }
+
+    .trend-down {
+      color: var(--red);
+      font-weight: 800;
+    }
+
+    .rfinal {
+      margin-top: 14px;
+      text-align: center;
+      background: var(--gold3);
+      border: 2px dashed var(--gold);
+      border-radius: 14px;
+      padding: 12px;
+      font-size: 15px;
+      line-height: 2;
+    }
+
+    .rfinal b {
+      font-size: 19px;
+      color: var(--teal);
+    }
+
+    .rnote {
+      margin-top: 12px;
+    }
+
+    .rnote label {
+      display: block;
+      font-weight: 700;
+      color: var(--teal);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .rnote textarea {
+      width: 100%;
+      min-height: 64px;
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-size: 14px;
+      resize: vertical;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .rnote textarea:focus {
+      border-color: var(--gold);
+      outline: none;
+    }
+
+    .rnote .print-note {
+      display: none;
+      white-space: pre-wrap;
+    }
+
+    .ractions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 16px 18px 0;
+    }
+
+    .ractions .btn {
+      font-size: 13.5px;
+      padding: 11px 4px;
+      border-radius: 12px;
+    }
+
+    .form-card {
+      padding: 0 18px 18px;
+    }
+
+    .form-card .field {
+      margin-top: 14px;
+    }
+
+    .chk {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .chk input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--teal2);
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .form-actions .btn {
+      flex: 1;
+    }
+
+    /* الإشعارات */
+    #toast {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      background: var(--teal);
+      color: #fff;
+      padding: 11px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      z-index: 200;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .3);
+      font-size: 15px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      transition: .2s;
+      max-width: calc(100% - 24px);
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%);
+      pointer-events: auto;
+    }
+
+    #toast button {
+      background: var(--gold2);
+      color: #2a1f05;
+      border: none;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .no-print,
+      .skip,
+      #toast,
+      .act-col {
+        display: none !important;
+      }
+
+      .hero {
+        padding: 10px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .hero::before,
+      .hero::after {
+        display: none;
+      }
+
+      .hero .print-month {
+        display: block;
+      }
+
+      .table-wrap {
+        overflow: visible;
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      table.grid {
+        min-width: 0;
+      }
+
+      .grid .name-cell {
+        position: static;
+      }
+
+      .grid thead th {
+        position: static;
+      }
+
+      .grid .star {
+        display: none;
+      }
+
+      .grid .cv {
+        font-size: 15px;
+        color: var(--ink);
+      }
+
+      .name-cell input {
+        border: none;
+      }
+
+      thead th,
+      .level-badge,
+      .rhead,
+      .rbody th {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body.print-report .page,
+      body.print-report .hero {
+        display: none !important;
+      }
+
+      body.print-report dialog[open] {
+        position: static;
+        max-width: 100%;
+        width: 100%;
+        max-height: none;
+        margin: 0;
+      }
+
+      body.print-report dialog::backdrop {
+        display: none;
+      }
+
+      body:not(.print-report) dialog {
+        display: none !important;
+      }
+
+      .rcard {
+        box-shadow: none;
+        animation: none;
+      }
+
+      .rnote textarea {
+        display: none;
+      }
+
+      .rnote .print-note {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#grid">تخطَّ إلى جدول التقييم</a>
+
+  <header class="hero">
+    <h1>🕌 مقرأة الشيخ عمار</h1>
+    <div class="orn" aria-hidden="true">✦ ✦ ✦</div>
+    <p class="sub">متابعة شهرية للحفظ والمراجعة مع أرشيف كامل للشهور</p>
+    <div class="print-month" id="printMonth"></div>
+  </header>
+
+  <main class="page wrap" id="main">
+    <section class="panel month-bar no-print" aria-label="اختيار الشهر">
+      <div class="field">
+        <label for="monthSel">📅 الشهر المعروض</label>
+        <select id="monthSel"></select>
+      </div>
+      <div class="field">
+        <label for="month">✏️ اسم الشهر</label>
+        <input type="text" id="month" placeholder="مثال: رمضان ١٤٤٧" autocomplete="off">
+      </div>
+      <div class="month-actions">
+        <button type="button" class="btn btn-gold btn-sm" id="newMonthBtn">🗓️ شهر جديد</button>
+        <button type="button" class="btn btn-red btn-sm" id="delMonthBtn">🗑️ حذف الشهر</button>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="ملخص الشهر" aria-live="polite">
+      <div class="stat">
+        <div class="k">👥 عدد الطلاب</div>
+        <div class="v" id="stCount">0</div>
+      </div>
+      <div class="stat">
+        <div class="k">⭐ متوسط المقرأة</div>
+        <div class="v" id="stAvg">—</div>
+        <div class="s" id="stAvgLvl">&nbsp;</div>
+      </div>
+      <div class="stat">
+        <div class="k">🏆 الأعلى أداءً</div>
+        <div class="v" id="stTop">—</div>
+        <div class="s" id="stTopAvg">&nbsp;</div>
+      </div>
+      <div class="stat">
+        <div class="k">✅ اكتمال التقييمات</div>
+        <div class="v" id="stDone">0٪</div>
+        <div class="s" id="stDoneS">&nbsp;</div>
+      </div>
+    </section>
+
+    <div class="toolbar no-print">
+      <button type="button" class="btn btn-gold" id="addBtn">➕ إضافة طالب</button>
+      <div class="search">
+        <label for="q" class="sr-only">بحث عن طالب</label>
+        <input type="search" id="q" class="ctl" placeholder="🔍 بحث عن طالب…" autocomplete="off">
+      </div>
+      <div class="sort">
+        <label for="sortSel" class="sr-only">ترتيب الطلاب</label>
+        <select id="sortSel" class="ctl">
+          <option value="none">الترتيب الأصلي</option>
+          <option value="name">ترتيب أبجدي</option>
+          <option value="avg">الأعلى متوسطاً أولاً</option>
+          <option value="low">الأقل متوسطاً أولاً</option>
+        </select>
+      </div>
+    </div>
+    <div class="toolbar no-print">
+      <button type="button" class="btn btn-light btn-sm" id="printBtn">🖨️ طباعة الكشف</button>
+      <button type="button" class="btn btn-light btn-sm" id="csvBtn">📥 تصدير Excel</button>
+      <button type="button" class="btn btn-light btn-sm" id="backupBtn">💾 نسخة احتياطية</button>
+      <button type="button" class="btn btn-light btn-sm" id="restoreBtn">📂 استعادة نسخة</button>
+      <input type="file" id="restoreFile" accept="application/json,.json" hidden>
+      <span class="spacer"></span>
+      <span class="save-status" id="saveStatus" role="status">✓ البيانات محفوظة على هذا الجهاز</span>
+    </div>
+
+    <div class="table-wrap">
+      <table class="grid" id="grid" tabindex="-1">
+        <caption class="sr-only" id="gridCaption">جدول تقييم الطلاب</caption>
+        <thead>
+          <tr>
+            <th rowspan="2" scope="col" class="name-cell">اسم الطالب</th>
+            <th colspan="2" scope="colgroup">الأسبوع ١</th>
+            <th colspan="2" scope="colgroup">الأسبوع ٢</th>
+            <th colspan="2" scope="colgroup">الأسبوع ٣</th>
+            <th colspan="2" scope="colgroup">الأسبوع ٤</th>
+            <th rowspan="2" scope="col">المتوسط</th>
+            <th rowspan="2" scope="col">المستوى</th>
+            <th rowspan="2" colspan="3" scope="colgroup" class="act-col">إجراءات</th>
+          </tr>
+          <tr>
+            <th class="sub-head" scope="col">الحفظ</th>
+            <th class="sub-head" scope="col">المراجعة</th>
+            <th class="sub-head" scope="col">الحفظ</th>
+            <th class="sub-head" scope="col">المراجعة</th>
+            <th class="sub-head" scope="col">الحفظ</th>
+            <th class="sub-head" scope="col">المراجعة</th>
+            <th class="sub-head" scope="col">الحفظ</th>
+            <th class="sub-head" scope="col">المراجعة</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <section class="panel" aria-label="سلم المستويات">
+      <div class="legend" id="legendInner"></div>
+    </section>
+    <div class="tips no-print">
+      💡 <b>طريقة الاستخدام:</b> اضغط على النجوم للتقييم (١ = ضعيف … ١٠ = ممتاز)، واضغط نفس النجمة مرة أخرى للمسح.
+      من لوحة المفاتيح: <kbd>Tab</kbd> للتنقل بين الخانات، <kbd>←</kbd> <kbd>→</kbd> لتغيير التقييم، الأرقام
+      <kbd>1</kbd>–<kbd>9</kbd> للتقييم المباشر، <kbd>End</kbd> لـ«ممتاز»، و<kbd>0</kbd> أو <kbd>Delete</kbd> للمسح.
+      البيانات تُحفظ تلقائياً على هذا الجهاز — يُنصح بأخذ <b>نسخة احتياطية</b> دورياً لنقلها لجهاز آخر أو حمايتها من
+      الضياع.
+    </div>
+  </main>
+
+  <!-- بطاقة التقرير -->
+  <dialog id="reportDlg" aria-labelledby="rTitle">
+    <div class="rcard">
+      <div class="rhead">
+        <h2 id="rTitle">🕌 تقرير الشهر</h2>
+        <div class="m" id="rSub"></div>
+      </div>
+      <div class="rname" id="rName"></div>
+      <div class="rrole" id="rRole"></div>
+      <div class="rbody">
+        <table>
+          <thead id="rHeadRow"></thead>
+          <tbody id="rBody"></tbody>
+        </table>
+        <div class="rfinal" id="rFinal"></div>
+        <div class="rnote" id="rNoteWrap">
+          <label for="rNote">📝 ملاحظة المعلم (تظهر في التقرير)</label>
+          <textarea id="rNote" placeholder="مثال: ما شاء الله، تحسّن ملحوظ في أحكام التجويد…"></textarea>
+          <div class="print-note" id="rNotePrint"></div>
+        </div>
+      </div>
+      <div class="ractions">
+        <button type="button" class="btn btn-teal" id="waBtn">🟢 واتساب</button>
+        <button type="button" class="btn btn-light" id="copyBtn">📋 نسخ</button>
+        <button type="button" class="btn btn-light" id="pdfBtn">🖨️ PDF</button>
+        <button type="button" class="btn btn-red" id="closeBtn">✕ إغلاق</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- شهر جديد -->
+  <dialog id="monthDlg" aria-labelledby="mdTitle">
+    <form class="rcard" method="dialog" id="monthForm">
+      <div class="rhead">
+        <h2 id="mdTitle">🗓️ فتح شهر جديد</h2>
+      </div>
+      <div class="form-card">
+        <div class="field">
+          <label for="newMonthName">اسم الشهر</label>
+          <input type="text" id="newMonthName" class="ctl" required autocomplete="off">
+        </div>
+        <label class="chk"><input type="checkbox" id="copyNames" checked> نسخ أسماء الطلاب من الشهر الحالي</label>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-gold" value="ok">✔️ فتح الشهر</button>
+          <button type="button" class="btn btn-light" id="monthCancel">إلغاء</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" role="status" aria-live="polite"><span id="toastMsg"></span></div>
+
+  <script>
+    const KEY = 'maqra_v5', OLD_KEY = 'maqra_v4';
+    const NAMES = ['ياسين', 'عمار', 'محمود', 'أحمد', 'عبد الملك', 'عبد الله', 'رقية', 'رحمة'];
+    const WEEKS = ['الأول', 'الثاني', 'الثالث', 'الرابع'];
+    const WEEK_NUM = ['١', '٢', '٣', '٤'];
+    const TYPES = ['الحفظ', 'المراجعة'];
+    const LEVELS = [
+      { t: '—', c: 'l0' },
+      { t: 'ضعيف', c: 'l1' }, { t: 'مقبول', c: 'l2' }, { t: 'مقبول⁺', c: 'l3' },
+      { t: 'جيد', c: 'l4' }, { t: 'جيد⁺', c: 'l5' },
+      { t: 'جيد مرتفع', c: 'l6' }, { t: 'جيد مرتفع⁺', c: 'l7' },
+      { t: 'جيد جداً', c: 'l8' }, { t: 'جيد جداً⁺', c: 'l9' }, { t: 'ممتاز', c: 'l10' }
+    ];
+    const MAX = LEVELS.length - 1; // 10
+    /* سلم الإصدار 4 كان من 8 درجات: جيد جداً=6، جيد جداً⁺=7، ممتاز=8 → تُزاح درجتين */
+    const OLD_MAP = { 6: 8, 7: 9, 8: 10 };
+    const CELLS = [0, 1, 2, 3, 4, 5, 6, 7];
+    const AR_DIGITS = { '٠': 0, '١': 1, '٢': 2, '٣': 3, '٤': 4, '٥': 5, '٦': 6, '٧': 7, '٨': 8, '٩': 9 };
+
+    let DB = { months: [], active: 0 };
+    const view = { q: '', sort: 'none' };
+    let report = null; // {type:'month'|'annual', i?, name}
+
+    const $ = id => document.getElementById(id);
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const emptyStudent = name => { const s = { name: name || '', note: '' }; CELLS.forEach(i => s['w' + i] = ''); return s; };
+    const valsOf = s => CELLS.map(i => s['w' + i]).filter(v => v !== '' && v != null).map(Number);
+    const avgOf = s => { const v = valsOf(s); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; };
+    const levelOf = a => a == null ? LEVELS[0] : (LEVELS[Math.round(a)] || LEVELS[0]);
+    const curMonth = () => DB.months[DB.active];
+    const monthLabel = (m, i) => m.month || ('شهر ' + (i + 1));
+
+    function suggestMonthName() {
+      try { return new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { month: 'long', year: 'numeric' }).format(new Date()).replace(/\s*هـ$/, ''); }
+      catch (e) { return ''; }
+    }
+
+    /* ===== الإشعارات ===== */
+    let toastTimer;
+    function toast(msg, action) {
+      const t = $('toast'); $('toastMsg').textContent = msg;
+      t.querySelector('button')?.remove();
+      if (action) {
+        const b = document.createElement('button'); b.type = 'button'; b.textContent = action.label;
+        b.onclick = () => { action.fn(); t.classList.remove('show'); };
+        t.appendChild(b);
+      }
+      t.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.remove('show'), action ? 6000 : 2200);
+    }
+
+    /* ===== التخزين ===== */
+    function normalize(d) {
+      if (!d || !Array.isArray(d.months)) return null;
+      d.months = d.months.filter(m => m && typeof m === 'object').map(m => ({
+        month: String(m.month || ''),
+        students: (Array.isArray(m.students) ? m.students : []).map(s => Object.assign(emptyStudent(), s, { name: String(s?.name || ''), note: String(s?.note || '') }))
+      }));
+      d.active = Math.min(Math.max(0, +d.active || 0), Math.max(0, d.months.length - 1));
+      return d;
+    }
+    function migrateV4(d) {
+      d.months.forEach(m => m.students.forEach(s => CELLS.forEach(i => { const v = +s['w' + i]; if (OLD_MAP[v]) s['w' + i] = String(OLD_MAP[v]); })));
+      return d;
+    }
+    function loadDB() {
+      try {
+        let d = normalize(JSON.parse(localStorage.getItem(KEY)));
+        if (!d) { d = normalize(JSON.parse(localStorage.getItem(OLD_KEY))); if (d) { migrateV4(d); localStorage.setItem(KEY, JSON.stringify(d)); } }
+        if (d) DB = d;
+      } catch (e) { }
+    }
+    let statusTimer;
+    function persist() {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(DB));
+        setStatus('✓ تم الحفظ تلقائياً');
+      } catch (e) { setStatus('⚠️ تعذّر الحفظ — خذ نسخة احتياطية', true); }
+    }
+    let persistTimer;
+    function persistSoon() { clearTimeout(persistTimer); persistTimer = setTimeout(persist, 350); }
+    function setStatus(msg, err) {
+      const s = $('saveStatus'); s.textContent = msg; s.classList.toggle('err', !!err);
+      clearTimeout(statusTimer);
+      if (!err) statusTimer = setTimeout(() => s.textContent = '✓ البيانات محفوظة على هذا الجهاز', 2500);
+    }
+
+    /* ===== الشهور ===== */
+    function refreshMonthSel() {
+      $('monthSel').innerHTML = DB.months.map((m, i) => `<option value="${i}" ${i === DB.active ? 'selected' : ''}>${esc(monthLabel(m, i))}</option>`).join('');
+      const label = curMonth().month || '—';
+      $('printMonth').textContent = 'كشف شهر: ' + label;
+      $('gridCaption').textContent = 'جدول تقييم الطلاب — شهر ' + label;
+    }
+    $('monthSel').addEventListener('change', e => { DB.active = +e.target.value; persist(); render(); });
+    $('month').addEventListener('input', e => { curMonth().month = e.target.value; refreshMonthSel(); persistSoon(); });
+
+    $('newMonthBtn').addEventListener('click', () => {
+      $('newMonthName').value = suggestMonthName();
+      $('copyNames').checked = true;
+      $('monthDlg').showModal();
+      $('newMonthName').select();
+    });
+    $('monthCancel').addEventListener('click', () => $('monthDlg').close());
+    $('monthForm').addEventListener('submit', () => {
+      const name = $('newMonthName').value.trim();
+      const src = $('copyNames').checked && curMonth() ? curMonth().students : [];
+      DB.months.push({ month: name, students: src.map(s => emptyStudent(s.name)) });
+      DB.active = DB.months.length - 1;
+      persist(); render();
+      toast('🗓️ تم فتح شهر «' + name + '»');
+    });
+    $('delMonthBtn').addEventListener('click', () => {
+      if (DB.months.length <= 1) { toast('لا يمكن حذف الشهر الوحيد'); return; }
+      const idx = DB.active, m = curMonth();
+      if (!confirm('⚠️ حذف «' + monthLabel(m, idx) + '» مع كل تقييماته؟')) return;
+      DB.months.splice(idx, 1);
+      DB.active = Math.max(0, idx - 1);
+      persist(); render();
+      toast('🗑️ تم حذف الشهر', { label: 'تراجع', fn: () => { DB.months.splice(idx, 0, m); DB.active = idx; persist(); render(); } });
+    });
+
+    /* ===== الجدول ===== */
+    function cellHTML(v, k) {
+      const n = +v || 0; let b = '';
+      for (let i = 1; i <= MAX; i++) {
+        const tab = (n ? i === n : i === 1) ? 0 : -1;
+        b += `<button type="button" class="star${n >= i ? ' on' : ''}" role="radio" aria-checked="${i === n}" tabindex="${tab}" data-n="${i}" aria-label="${i} من ${MAX} — ${LEVELS[i].t}">★</button>`;
+      }
+      const w = Math.floor(k / 2), t = k % 2;
+      return `<div class="stars" role="radiogroup" data-k="${k}" aria-label="الأسبوع ${WEEKS[w]} — ${TYPES[t]}">${b}</div>`
+        + `<span class="cv" aria-hidden="true">${n ? n + ' · ' + LEVELS[n].t : '·'}</span>`;
+    }
+    function rowHTML(s, i) {
+      const a = avgOf(s), L = levelOf(a);
+      let h = `<tr data-i="${i}"><th scope="row" class="name-cell"><input class="nm" value="${esc(s.name)}" placeholder="اسم الطالب" aria-label="اسم الطالب" autocomplete="off"></th>`;
+      CELLS.forEach(k => h += `<td>${cellHTML(s['w' + k], k)}</td>`);
+      h += `<td class="avg-cell">${a == null ? '—' : a.toFixed(1)}</td><td><span class="level-badge ${L.c}">${L.t}</span></td>`;
+      h += `<td class="act-col"><button type="button" class="icon-btn" data-act="report" title="تقرير الشهر" aria-label="تقرير الشهر">📋</button></td>`;
+      h += `<td class="act-col"><button type="button" class="icon-btn" data-act="annual" title="الأداء التراكمي" aria-label="الأداء التراكمي عبر الشهور">📈</button></td>`;
+      h += `<td class="act-col"><button type="button" class="icon-btn del-btn" data-act="del" title="حذف الطالب" aria-label="حذف الطالب">🗑️</button></td></tr>`;
+      return h;
+    }
+    function renderRows() {
+      const st = curMonth().students, q = view.q.trim();
+      let idx = st.map((_, i) => i);
+      if (q) idx = idx.filter(i => st[i].name.includes(q));
+      const av = i => avgOf(st[i]);
+      if (view.sort === 'name') idx.sort((a, b) => st[a].name.localeCompare(st[b].name, 'ar'));
+      if (view.sort === 'avg') idx.sort((a, b) => (av(b) ?? -1) - (av(a) ?? -1));
+      if (view.sort === 'low') idx.sort((a, b) => (av(a) ?? 99) - (av(b) ?? 99));
+      $('tbody').innerHTML = idx.length ? idx.map(i => rowHTML(st[i], i)).join('')
+        : `<tr class="empty-row"><td colspan="14">${q ? 'لا يوجد طالب بهذا الاسم' : 'لا يوجد طلاب في هذا الشهر بعد — اضغط «➕ إضافة طالب» للبدء'}</td></tr>`;
+    }
+    function renderStats() {
+      const st = curMonth().students;
+      const avgs = st.map(s => ({ n: s.name, a: avgOf(s) })).filter(x => x.a != null);
+      $('stCount').textContent = st.length;
+      if (avgs.length) {
+        const m = avgs.reduce((x, y) => x + y.a, 0) / avgs.length;
+        $('stAvg').textContent = m.toFixed(1) + ' / ' + MAX; $('stAvgLvl').textContent = levelOf(m).t;
+        const top = avgs.reduce((x, y) => y.a > x.a ? y : x);
+        const ties = avgs.filter(x => x.a === top.a).length;
+        $('stTop').textContent = (top.n || '—') + (ties > 1 ? ' +' + (ties - 1) : '');
+        $('stTop').title = avgs.filter(x => x.a === top.a).map(x => x.n).join('، ');
+        $('stTopAvg').textContent = top.a.toFixed(1) + ' / ' + MAX;
+      } else {
+        $('stAvg').textContent = '—'; $('stAvgLvl').textContent = 'لا تقييمات بعد';
+        $('stTop').textContent = '—'; $('stTop').title = ''; $('stTopAvg').textContent = ' ';
+      }
+      const total = st.length * CELLS.length, done = st.reduce((x, s) => x + valsOf(s).length, 0);
+      $('stDone').textContent = (total ? Math.round(done / total * 100) : 0) + '٪';
+      $('stDoneS').textContent = total ? `${done} من ${total} تقييم` : ' ';
+    }
+    function updateRow(tr) {
+      const s = curMonth().students[+tr.dataset.i], a = avgOf(s), L = levelOf(a);
+      tr.querySelector('.avg-cell').textContent = a == null ? '—' : a.toFixed(1);
+      const b = tr.querySelector('.level-badge'); b.textContent = L.t; b.className = 'level-badge ' + L.c;
+    }
+    function setCell(group, n, toggle) {
+      const tr = group.closest('tr'), s = curMonth().students[+tr.dataset.i], k = +group.dataset.k;
+      const cur = +s['w' + k] || 0;
+      const val = (n === 0 || (toggle && n === cur)) ? 0 : n;
+      s['w' + k] = val ? String(val) : '';
+      group.querySelectorAll('.star').forEach(b => {
+        const i = +b.dataset.n;
+        b.classList.toggle('on', i <= val);
+        b.setAttribute('aria-checked', String(i === val));
+        b.tabIndex = (val ? i === val : i === 1) ? 0 : -1;
+      });
+      group.nextElementSibling.textContent = val ? val + ' · ' + LEVELS[val].t : '·';
+      updateRow(tr); renderStats(); persist();
+      return val;
+    }
+    function render() {
+      if (!curMonth()) { DB.months.push({ month: suggestMonthName(), students: NAMES.map(emptyStudent) }); DB.active = 0; persist(); }
+      $('month').value = curMonth().month || '';
+      refreshMonthSel(); renderRows(); renderStats();
+    }
+
+    const tbody = $('tbody');
+    tbody.addEventListener('click', e => {
+      const star = e.target.closest('.star');
+      if (star) { setCell(star.parentElement, +star.dataset.n, true); return; }
+      const btn = e.target.closest('[data-act]'); if (!btn) return;
+      const tr = btn.closest('tr'), i = +tr.dataset.i;
+      if (btn.dataset.act === 'report') openReport(i, btn);
+      else if (btn.dataset.act === 'annual') openAnnual(curMonth().students[i].name, btn);
+      else if (btn.dataset.act === 'del') delStudent(i);
+    });
+    tbody.addEventListener('keydown', e => {
+      const star = e.target.closest('.star'); if (!star) return;
+      const group = star.parentElement, cur = +curMonth().students[+group.closest('tr').dataset.i]['w' + group.dataset.k] || 0;
+      let n = null; const key = e.key in AR_DIGITS ? String(AR_DIGITS[e.key]) : e.key;
+      if (key === 'ArrowRight' || key === 'ArrowUp') n = Math.min(MAX, cur + 1);
+      else if (key === 'ArrowLeft' || key === 'ArrowDown') n = Math.max(1, cur - 1);
+      else if (key === 'Home') n = 1;
+      else if (key === 'End') n = MAX;
+      else if (/^[0-9]$/.test(key)) n = +key;
+      else if (key === 'Delete' || key === 'Backspace') n = 0;
+      if (n === null) return;
+      e.preventDefault();
+      const val = setCell(group, n, false);
+      group.querySelector(`.star[data-n="${val || 1}"]`).focus();
+    });
+    tbody.addEventListener('input', e => {
+      if (!e.target.classList.contains('nm')) return;
+      curMonth().students[+e.target.closest('tr').dataset.i].name = e.target.value;
+      renderStats(); persistSoon();
+    });
+
+    $('addBtn').addEventListener('click', () => {
+      curMonth().students.push(emptyStudent(''));
+      view.q = ''; $('q').value = '';
+      persist(); renderRows(); renderStats();
+      const i = curMonth().students.length - 1;
+      tbody.querySelector(`tr[data-i="${i}"] .nm`)?.focus();
+    });
+    function delStudent(i) {
+      const st = curMonth().students, s = st[i], mi = DB.active;
+      st.splice(i, 1);
+      persist(); renderRows(); renderStats();
+      toast('🗑️ تم حذف «' + (s.name || 'طالب') + '»', { label: 'تراجع', fn: () => { DB.months[mi].students.splice(i, 0, s); persist(); render(); } });
+    }
+    $('q').addEventListener('input', e => { view.q = e.target.value; renderRows(); });
+    $('sortSel').addEventListener('change', e => { view.sort = e.target.value; renderRows(); });
+
+    /* ===== التقارير ===== */
+    function starsSpan(n) { return `<span class="rs" aria-hidden="true">${'★'.repeat(n)}<i>${'★'.repeat(MAX - n)}</i></span>`; }
+    function rateLabel(v) {
+      if (!v) return '—';
+      const n = Math.round(+v);
+      return starsSpan(n) + ' <b>' + LEVELS[n].t + '</b><span class="sr-only"> (' + n + ' من ' + MAX + ')</span>';
+    }
+    function rateText(v) { return v ? LEVELS[Math.round(+v)].t + ' (' + v + '/' + MAX + ')' : '—'; }
+    function showReport(opener) {
+      report.opener = opener;
+      $('reportDlg').showModal();
+    }
+    function openReport(i, opener) {
+      const m = curMonth(), s = m.students[i], a = avgOf(s), L = levelOf(a);
+      report = { type: 'month', i, mi: DB.active };
+      $('rTitle').textContent = '🕌 تقرير الشهر';
+      $('rSub').textContent = 'مقرأة الشيخ عمار — شهر ' + (m.month || '—');
+      $('rName').textContent = s.name || 'طالب';
+      $('rRole').textContent = 'طالب / طالبة بمقرأة القرآن الكريم';
+      $('rHeadRow').innerHTML = '<tr><th scope="col">الأسبوع</th><th scope="col">📝 الحفظ</th><th scope="col">🔁 المراجعة</th></tr>';
+      $('rBody').innerHTML = WEEKS.map((w, k) => `<tr><th scope="row" style="background:#fff;color:var(--ink)">${w}</th><td>${rateLabel(s['w' + k * 2])}</td><td>${rateLabel(s['w' + (k * 2 + 1)])}</td></tr>`).join('');
+      $('rFinal').innerHTML = a != null
+        ? `⭐ المتوسط العام: <b>${a.toFixed(1)} / ${MAX}</b><br>🏆 التقييم: <b>${L.t}</b>`
+        : 'لا توجد تقييمات بعد هذا الشهر';
+      $('rNoteWrap').hidden = false;
+      $('rNote').value = s.note || ''; $('rNotePrint').textContent = s.note || '';
+      showReport(opener);
+    }
+    $('rNote').addEventListener('input', e => {
+      if (report?.type !== 'month') return;
+      DB.months[report.mi].students[report.i].note = e.target.value;
+      $('rNotePrint').textContent = e.target.value;
+      persistSoon();
+    });
+    function annualRows(name) {
+      const rows = [];
+      DB.months.forEach((m, i) => {
+        const s = m.students.find(x => x.name === name);
+        if (s) rows.push({ m: monthLabel(m, i), avg: avgOf(s) });
+      });
+      return rows;
+    }
+    function openAnnual(name, opener) {
+      name = name || '';
+      const rows = annualRows(name), rated = rows.filter(r => r.avg != null);
+      const overall = rated.length ? rated.reduce((x, r) => x + r.avg, 0) / rated.length : null;
+      report = { type: 'annual', name };
+      $('rTitle').textContent = '📈 الأداء التراكمي';
+      $('rSub').textContent = 'مقرأة الشيخ عمار — ' + DB.months.length + ' شهر مسجل';
+      $('rName').textContent = name || 'طالب';
+      $('rRole').textContent = 'ملخص أداء الطالب عبر الشهور';
+      $('rHeadRow').innerHTML = '<tr><th scope="col">الشهر</th><th scope="col">المتوسط</th><th scope="col">المستوى</th></tr>';
+      let prev = null;
+      $('rBody').innerHTML = rows.map(r => {
+        let trend = '';
+        if (r.avg != null && prev != null) {
+          if (r.avg > prev + .05) trend = ' <span class="trend-up" title="تحسّن">▲<span class="sr-only"> تحسّن</span></span>';
+          else if (r.avg < prev - .05) trend = ' <span class="trend-down" title="تراجع">▼<span class="sr-only"> تراجع</span></span>';
+        }
+        if (r.avg != null) prev = r.avg;
+        const L = levelOf(r.avg);
+        return `<tr><th scope="row" style="background:#fff;color:var(--ink)">${esc(r.m)}</th><td>${r.avg != null ? r.avg.toFixed(1) + trend : '—'}</td>`
+          + `<td>${r.avg != null ? `<span class="level-badge ${L.c}">${L.t}</span>` : '—'}</td></tr>`;
+      }).join('');
+      $('rFinal').innerHTML = overall != null
+        ? `📊 متوسط الفترة الكاملة: <b>${overall.toFixed(1)} / ${MAX}</b> (${rated.length} شهر)<br>🏆 المستوى العام: <b>${levelOf(overall).t}</b>`
+        : 'لا توجد تقييمات مسجلة بعد';
+      $('rNoteWrap').hidden = true;
+      showReport(opener);
+    }
+    function reportText() {
+      const line = '━━━━━━━━━━━━━━\n';
+      if (report.type === 'month') {
+        const m = DB.months[report.mi], s = m.students[report.i], a = avgOf(s);
+        return '🕌 *تقرير مقرأة الشيخ عمار*\n📖 متابعة الحفظ والمراجعة\n' + line
+          + `👤 *الطالب:* ${s.name || 'طالب'}\n📅 *الشهر:* ${m.month || '—'}\n` + line
+          + WEEKS.map((w, k) => `🔹 *الأسبوع ${w}*\n   الحفظ: ${rateText(s['w' + k * 2])} | المراجعة: ${rateText(s['w' + (k * 2 + 1)])}`).join('\n')
+          + '\n' + line
+          + (a != null ? `⭐ المتوسط: *${a.toFixed(1)} / ${MAX}*\n🏆 التقييم العام: *${levelOf(a).t}*` : 'لا توجد تقييمات بعد')
+          + (s.note?.trim() ? '\n' + line + '📝 *ملاحظة المعلم:*\n' + s.note.trim() : '')
+          + '\n' + line + '🤲 نسأل الله التوفيق لجميع أبنائنا';
+      }
+      const rows = annualRows(report.name), rated = rows.filter(r => r.avg != null);
+      const overall = rated.length ? rated.reduce((x, r) => x + r.avg, 0) / rated.length : null;
+      return '📈 *التقرير التراكمي — مقرأة الشيخ عمار*\n' + line
+        + `👤 *الطالب:* ${report.name || 'طالب'}\n` + line
+        + rows.map(r => `📅 ${r.m}: ${r.avg != null ? r.avg.toFixed(1) + '/' + MAX + ' — ' + levelOf(r.avg).t : '—'}`).join('\n')
+        + '\n' + line
+        + (overall != null ? `📊 متوسط الفترة: *${overall.toFixed(1)} / ${MAX}*\n🏆 المستوى العام: *${levelOf(overall).t}*` : 'لا توجد تقييمات بعد')
+        + '\n' + line + '🤲 نسأل الله التوفيق والقبول';
+    }
+    $('waBtn').addEventListener('click', () => window.open('https://wa.me/?text=' + encodeURIComponent(reportText()), '_blank', 'noopener'));
+    $('copyBtn').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(reportText()); toast('📋 تم نسخ التقرير'); }
+      catch (e) { toast('تعذّر النسخ على هذا المتصفح'); }
+    });
+    $('pdfBtn').addEventListener('click', () => { document.body.classList.add('print-report'); window.print(); });
+    window.addEventListener('afterprint', () => document.body.classList.remove('print-report'));
+    $('closeBtn').addEventListener('click', () => $('reportDlg').close());
+    $('reportDlg').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.close(); });
+    $('reportDlg').addEventListener('close', () => {
+      const o = report?.opener; report = null;
+      if (o && document.contains(o)) o.focus();
+    });
+
+    /* ===== الطباعة والتصدير ===== */
+    $('printBtn').addEventListener('click', () => { document.body.classList.remove('print-report'); window.print(); });
+
+    function csvCell(v) { v = String(v ?? ''); return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+    function download(name, content, type) {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([content], { type }));
+      a.download = name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    }
+    const today = () => new Date().toISOString().slice(0, 10);
+    $('csvBtn').addEventListener('click', () => {
+      const rows = [];
+      DB.months.forEach((m, i) => {
+        rows.push(['الشهر', monthLabel(m, i)]);
+        rows.push(['اسم الطالب', ...WEEKS.flatMap(w => [w + ' حفظ', w + ' مراجعة']), 'المتوسط', 'المستوى', 'ملاحظة المعلم']);
+        m.students.forEach(s => {
+          const a = avgOf(s);
+          rows.push([s.name, ...CELLS.map(k => s['w' + k] || '-'), a == null ? '—' : a.toFixed(1), levelOf(a).t, s.note || '']);
+        });
+        rows.push([]);
+      });
+      download('أرشيف_مقرأة_' + today() + '.csv', '﻿' + rows.map(r => r.map(csvCell).join(',')).join('\r\n'), 'text/csv;charset=utf-8');
+      toast('📥 تم تصدير الملف');
+    });
+    $('backupBtn').addEventListener('click', () => {
+      download('نسخة_مقرأة_' + today() + '.json', JSON.stringify({ app: 'maqra', version: 5, savedAt: new Date().toISOString(), ...DB }, null, 1), 'application/json');
+      toast('💾 تم حفظ النسخة الاحتياطية');
+    });
+    $('restoreBtn').addEventListener('click', () => $('restoreFile').click());
+    $('restoreFile').addEventListener('change', async e => {
+      const f = e.target.files[0]; e.target.value = '';
+      if (!f) return;
+      try {
+        const raw = JSON.parse(await f.text());
+        const d = normalize(raw);
+        if (!d || !d.months.length) throw 0;
+        if (!(+raw.version >= 5)) migrateV4(d);
+        if (!confirm(`استعادة ${d.months.length} شهر من الملف؟ سيتم استبدال البيانات الحالية.`)) return;
+        const old = JSON.parse(JSON.stringify(DB));
+        DB = { months: d.months, active: d.active };
+        persist(); render();
+        toast('📂 تمت الاستعادة بنجاح', { label: 'تراجع', fn: () => { DB = old; persist(); render(); } });
+      } catch (err) { toast('⚠️ الملف غير صالح'); }
+    });
+
+    /* مزامنة بين النوافذ المفتوحة */
+    window.addEventListener('storage', e => { if (e.key === KEY) { loadDB(); render(); } });
+
+    /* سلم المستويات */
+    $('legendInner').innerHTML = '<b>🔑 سلم المستويات:</b>' + LEVELS.slice(1).map((l, i) =>
+      `<span><span class="lstar" aria-hidden="true">${'★'.repeat(i + 1)}</span> <b>${i + 1} — ${l.t}</b></span>`).join('');
+
+    loadDB();
+    render();
+  </script>
+</body>
+
+</html>
