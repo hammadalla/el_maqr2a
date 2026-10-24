@@ -1186,12 +1186,34 @@
       d.months.forEach(m => m.students.forEach(s => CELLS.forEach(i => { const v = +s['w' + i]; if (OLD_MAP[v]) s['w' + i] = String(OLD_MAP[v]); })));
       return d;
     }
-    function loadDB() {
+    function loadStoredDB() {
       try {
         let d = normalize(JSON.parse(localStorage.getItem(KEY)));
         if (!d) { d = normalize(JSON.parse(localStorage.getItem(OLD_KEY))); if (d) { migrateV4(d); localStorage.setItem(KEY, JSON.stringify(d)); } }
-        if (d) DB = d;
-      } catch (e) { }
+        return d;
+      } catch (e) {
+        setStatus('⚠️ تعذّرت قراءة البيانات المحفوظة', true);
+        return null;
+      }
+    }
+    async function loadDB() {
+      const stored = loadStoredDB();
+      if (stored) {
+        DB = stored;
+        return true;
+      }
+      try {
+        const response = await fetch('./index_js.json');
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        const d = normalize(await response.json());
+        if (!d) throw new Error('Invalid data format');
+        DB = d;
+        persist();
+        return true;
+      } catch (e) {
+        setStatus('⚠️ تعذّر تحميل index_js.json — افتح الصفحة عبر خادم ويب', true);
+        return false;
+      }
     }
     let statusTimer;
     function persist() {
@@ -1520,14 +1542,21 @@
     });
 
     /* مزامنة بين النوافذ المفتوحة */
-    window.addEventListener('storage', e => { if (e.key === KEY) { loadDB(); render(); } });
+    window.addEventListener('storage', e => {
+      if (e.key === KEY) {
+        const stored = loadStoredDB();
+        if (stored) { DB = stored; render(); }
+      }
+    });
 
     /* سلم المستويات */
     $('legendInner').innerHTML = '<b>🔑 سلم المستويات:</b>' + LEVELS.slice(1).map((l, i) =>
       `<span><span class="lstar" aria-hidden="true">${'★'.repeat(i + 1)}</span> <b>${i + 1} — ${l.t}</b></span>`).join('');
 
-    loadDB();
-    render();
+    loadDB().then(loaded => {
+      render();
+      if (!loaded) setStatus('⚠️ تعذّر تحميل index_js.json — افتح الصفحة عبر خادم ويب', true);
+    });
   </script>
 </body>
 
